@@ -2,14 +2,9 @@
   <h1>
     Tabata Timer
   </h1>
+  <div>
+    You have selected: {{workout === 0 ? 'BodyWeight' : 'Cardio Machine'}}
+  </div>
 </div>
-<h2>Select your workout type: </h2>
-<ul>
-  <li>
-    Body-Weight
-  </li>
-  <li>
-    Cardio Machine
-  </li>
-</ul>
+<app-workout-selector (workoutSelected)="workoutSelected($event)"></app-workout-selector>
 
