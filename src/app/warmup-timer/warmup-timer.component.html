@@ -1,3 +1,4 @@
 <h1>Warmup Timer</h1>
-<div>10:00</div>
+<div>{{time}}</div>
+<div *ngIf="!time">Warmup complete</div>
 <button (click)="startWorkout()">Start Workout</button>

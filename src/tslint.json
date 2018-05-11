@@ -13,6 +13,9 @@
             "app",
             "kebab-case"
         ],
+        "curly": [
+          false
+        ],
         "member-ordering": [
           false
         ]
