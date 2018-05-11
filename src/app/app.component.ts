@@ -15,11 +15,17 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.workout = Workout.BodyWeight;
+    this.intervalCount = 2;
   }
 
   workoutSelected(selection: Workout) {
     this.workout = selection;
   }
 
+  intervalCountSelected(selection: number) {
+    this.intervalCount = selection;
+  }
+
   workout: Workout;
+  intervalCount: number;
 }

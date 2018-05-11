@@ -3,8 +3,12 @@
     Tabata Timer
   </h1>
   <div>
-    You have selected: {{workout === 0 ? 'BodyWeight' : 'Cardio Machine'}}
+    Workout Type: {{workout === 0 ? 'BodyWeight' : 'Cardio Machine'}}
+  </div>
+  <div>
+    Intervals: {{intervalCount}}
   </div>
 </div>
 <app-workout-selector (workoutSelected)="workoutSelected($event)"></app-workout-selector>
+<app-interval-selector (intervalCountSelected)="intervalCountSelected($event)"></app-interval-selector>
 

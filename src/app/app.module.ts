@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { WorkoutSelectorComponent } from './workout-selector/workout-selector.component';
+import { IntervalSelectorComponent } from './interval-selector/interval-selector.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WorkoutSelectorComponent
+    WorkoutSelectorComponent,
+    IntervalSelectorComponent
   ],
   imports: [
     BrowserModule
