@@ -9,6 +9,20 @@
     Intervals: {{intervalCount}}
   </div>
 </div>
-<app-workout-selector (workoutSelected)="workoutSelected($event)"></app-workout-selector>
-<app-interval-selector (intervalCountSelected)="intervalCountSelected($event)"></app-interval-selector>
 
+<div *ngIf="isSelecting">
+  <app-workout-selector (workoutSelected)="workoutSelected($event)"></app-workout-selector>
+  <app-interval-selector (intervalCountSelected)="intervalCountSelected($event)"></app-interval-selector>
+  <div>
+    <button (click)="startWarmup()">Start Warmup</button>
+    <button (click)="startWorkout()">Start Workout</button>
+  </div>
+</div>
+
+<div *ngIf="isWarmingUp">
+  <app-warmup-timer (warmupFinished)="startWorkout()"></app-warmup-timer>
+</div>
+
+<div *ngIf="isWorkingOut">
+  WORKOUT TIMER
+</div>
