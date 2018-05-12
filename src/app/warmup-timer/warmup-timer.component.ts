@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
 import { TimerService } from '../timer.service';
 import { Subscription } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-warmup-timer',
@@ -13,22 +14,34 @@ export class WarmupTimerComponent implements OnInit, OnDestroy {
   constructor(private timerService: TimerService) { }
 
   ngOnInit() {
-    this.time = 20;
     this._timerSubscription = this.timerService.timerUpdate.subscribe(value => {
-      this.time = value;
+      if (value <= 0)
+        this.finishWarmup();
+
+      this.timeDisplay = moment(value).format('mm:ss:SS');
     });
 
-    this.timerService.startCountdownTimer(this.time);
+    const countdownTime = moment(10, 'minutes');
+    this.timerService.startMinutesTimer(countdownTime);
   }
 
   ngOnDestroy() {
      this._timerSubscription.unsubscribe();
   }
 
+  finishWarmup() {
+    this.isFinished = true;
+
+    setTimeout(() => {
+     this.startWorkout();
+    }, 3000);
+  }
+
   startWorkout() {
     this.warmupFinished.emit();
   }
 
-  time: number;
+  timeDisplay: string;
+  isFinished: boolean;
   private _timerSubscription: Subscription;
 }
