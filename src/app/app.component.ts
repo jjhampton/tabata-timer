@@ -58,6 +58,7 @@ export class AppComponent implements OnInit {
   isWarmingUp: boolean;
   isWorkingOut: boolean;
   isCoolingDown: boolean;
+  WorkoutOptions = Workout;
   workout: Workout;
   intervalCount: number;
 }

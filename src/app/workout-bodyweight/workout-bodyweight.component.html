@@ -1,0 +1,5 @@
+<div>Selected Exercise: {{selectedExercise}}</div>
+<div>Current Interval: {{currentInterval}}</div>
+<div>{{isExercising ? 'Exercising' : 'Resting'}}</div>
+<div *ngIf="!this.isFinished">time: {{timeDisplay}}</div>
+<div *ngIf="this.isFinished">Workout Complete</div>

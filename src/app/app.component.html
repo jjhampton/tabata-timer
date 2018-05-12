@@ -3,7 +3,7 @@
     Tabata Timer
   </h1>
   <div>
-    Workout Type: {{workout === 0 ? 'BodyWeight' : 'Cardio Machine'}}
+    Workout Type: {{workout == WorkoutOptions.BodyWeight ? 'BodyWeight' : 'Cardio Machine'}}
   </div>
   <div>
     Intervals: {{intervalCount}}
@@ -24,5 +24,6 @@
 </div>
 
 <div *ngIf="isWorkingOut">
-  WORKOUT TIMER
+  <app-workout-bodyweight *ngIf="workout === WorkoutOptions.BodyWeight" [intervals]="intervalCount"></app-workout-bodyweight>
+  <app-workout-cardio *ngIf="workout === WorkoutOptions.CardioMachine"></app-workout-cardio>
 </div>

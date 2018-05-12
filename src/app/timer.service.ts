@@ -6,12 +6,11 @@ import * as moment from 'moment';
   providedIn: 'root'
 })
 export class TimerService {
-  constructor() { }
+  constructor() {}
 
   startSecondsTimer(seconds: moment.Moment) {
     const end = moment().add(seconds.second(), 'seconds');
     this.startTimer(end);
-
   }
 
   startMinutesTimer(minutes: moment.Moment) {
@@ -20,14 +19,20 @@ export class TimerService {
   }
 
   private startTimer(end: moment.Moment) {
+    if (this.timer)
+      clearInterval(this.timer);
+
     const timer = setInterval(() => {
       const remainingTime = end.diff(moment());
-      this.timerUpdate.next(remainingTime);
-
       if (remainingTime <= 0)
         clearInterval(timer);
+
+      this.timerUpdate.next(remainingTime);
     }, 1);
+
+    this.timer = timer;
   }
 
+  timer: NodeJS.Timer;
   timerUpdate: Subject<number> = new Subject<number>();
 }

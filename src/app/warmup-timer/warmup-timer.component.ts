@@ -38,6 +38,7 @@ export class WarmupTimerComponent implements OnInit, OnDestroy {
   }
 
   startWorkout() {
+    this._timerSubscription.unsubscribe();
     this.warmupFinished.emit();
   }
 
