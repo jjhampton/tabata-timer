@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
     this.isWorkingOut = true;
   }
 
-  startCoolDown() {
+  startCooldown() {
     this.reset();
     this.isCoolingDown = true;
   }

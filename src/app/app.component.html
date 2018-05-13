@@ -24,6 +24,14 @@
 </div>
 
 <div *ngIf="isWorkingOut">
-  <app-workout-bodyweight *ngIf="workout === WorkoutOptions.BodyWeight" [intervals]="intervalCount"></app-workout-bodyweight>
+  <app-workout-bodyweight
+    *ngIf="workout === WorkoutOptions.BodyWeight"
+    [intervals]="intervalCount"
+    (workoutFinished)="startCooldown()">
+  </app-workout-bodyweight>
   <app-workout-cardio *ngIf="workout === WorkoutOptions.CardioMachine"></app-workout-cardio>
+</div>
+
+<div *ngIf="isCooolingDown">
+  Cool Down
 </div>

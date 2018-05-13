@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit, OnDestroy } from '@angular/core';
 import { TimerService } from '../timer.service';
 import { Subscription } from 'rxjs';
 import * as moment from 'moment';
@@ -10,21 +10,22 @@ import * as moment from 'moment';
 })
 export class WorkoutBodyweightComponent implements OnInit, OnDestroy {
   @Input() intervals: number;
+  @Output() workoutFinished = new EventEmitter();
 
   constructor(private timerService: TimerService) { }
 
   ngOnInit() {
     this.exercises = [
-      'burpees',
-      'jump squat',
-      'russian twist',
-      'push-up',
-      'lunge',
-      'lateral lunge to knee dive',
-      'mountain climber to single-leg push-up',
-      'single-arm kick-through',
-      'lateral jump-squat',
-      'star jack'
+      'Burpees',
+      'Jump Squat',
+      'Russian Twist',
+      'Push-up',
+      'Lunge',
+      'Lateral Lunge to Knee Dive',
+      'Mountain Climber to Single-leg Push-up',
+      'Single-arm Kick-through',
+      'Lateral Jump Squat',
+      'Star Jack'
     ];
 
     this.currentInterval = 0;
@@ -42,17 +43,17 @@ export class WorkoutBodyweightComponent implements OnInit, OnDestroy {
 
   startExerciseInterval() {
     this.currentInterval++;
-    this.isExercising = true;
-    this.isResting = false;
-
     this.selectRandomExercise();
+
     this._timerSubscription = this.timerService.timerUpdate.subscribe(value => {
-      if (value <= 0) {
-        this._timerSubscription.unsubscribe();
-        this.startRest();
+      const isTimeRemaining = value > 0;
+      if (isTimeRemaining) {
+        this.timeDisplay = moment(value).format('mm:ss:SS');
+        return;
       }
 
-      this.timeDisplay = moment(value).format('mm:ss:SS');
+      this._timerSubscription.unsubscribe();
+      this.startRest();
     });
 
     const countdownTime = moment(20, 'seconds');
@@ -60,31 +61,42 @@ export class WorkoutBodyweightComponent implements OnInit, OnDestroy {
   }
 
   startRest() {
-    this.isExercising = false;
-    this.isResting = true;
+    this.selectedExercise = 'Resting';
 
     this._timerSubscription = this.timerService.timerUpdate.subscribe(value => {
-      if (value <= 0 && this.currentInterval < this.intervals) {
-        this._timerSubscription.unsubscribe();
-        this.startExerciseInterval();
+      const isTimeRemaining = value > 0;
+      const hasIntervalsRemaining = this.currentInterval < this.intervals;
+
+      if (isTimeRemaining) {
+        this.timeDisplay = moment(value).format('mm:ss:SS');
+        return;
       }
 
-      if (this.currentInterval >= this.intervals)
-        this.isFinished = true;
+      if (hasIntervalsRemaining) {
+        this._timerSubscription.unsubscribe();
+        this.startExerciseInterval();
+        return;
+      }
 
-      this.timeDisplay = moment(value).format('mm:ss:SS');
+      this._timerSubscription.unsubscribe();            this.finishWorkout();
     });
 
     const countdownTime = moment(10, 'seconds');
     this.timerService.startSecondsTimer(countdownTime);
   }
 
+  finishWorkout() {
+    this.isFinished = true;
+
+    setTimeout(() => {
+      this.workoutFinished.emit();
+    }, 3000);
+  }
+
   exercises: string[];
   selectedExercise: string;
   private _timerSubscription: Subscription;
   timeDisplay: string;
-  isExercising: boolean;
-  isResting: boolean;
   isFinished: boolean;
   currentInterval: number;
 }
