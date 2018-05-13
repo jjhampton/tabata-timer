@@ -1,8 +1,9 @@
+<h1>Bodyweight Workout</h1>
 <div>Current Interval: {{currentInterval}}</div>
 
 <div *ngIf="!this.isFinished">
   <div>time: {{timeDisplay}}</div>
-  <div>Selected Exercise: {{selectedExercise}}</div>
+  <div>Exercise: {{selectedExercise}}</div>
 </div>
 
 <div *ngIf="this.isFinished">Workout Complete</div>

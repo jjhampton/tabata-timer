@@ -3,16 +3,20 @@
     Tabata Timer
   </h1>
   <div>
-    Workout Type: {{workout == WorkoutOptions.BodyWeight ? 'BodyWeight' : 'Cardio Machine'}}
+    Workout Type: {{workout == WorkoutOptions.Bodyweight ? 'Bodyweight' : 'Cardio Machine'}}
   </div>
   <div>
     Intervals: {{intervalCount}}
   </div>
+  <button (click)="startSelecting()">Start Over</button>
 </div>
 
 <div *ngIf="isSelecting">
   <app-workout-selector (workoutSelected)="workoutSelected($event)"></app-workout-selector>
-  <app-interval-selector (intervalCountSelected)="intervalCountSelected($event)"></app-interval-selector>
+  <app-interval-selector
+    (intervalCountSelected)="intervalCountSelected($event)"
+    [intervals]="intervalCount">
+  </app-interval-selector>
   <div>
     <button (click)="startWarmup()">Start Warmup</button>
     <button (click)="startWorkout()">Start Workout</button>
@@ -25,11 +29,15 @@
 
 <div *ngIf="isWorkingOut">
   <app-workout-bodyweight
-    *ngIf="workout === WorkoutOptions.BodyWeight"
+    *ngIf="workout === WorkoutOptions.Bodyweight"
     [intervals]="intervalCount"
     (workoutFinished)="startCooldown()">
   </app-workout-bodyweight>
-  <app-workout-cardio *ngIf="workout === WorkoutOptions.CardioMachine"></app-workout-cardio>
+  <app-workout-cardio
+    *ngIf="workout === WorkoutOptions.CardioMachine"
+    [intervals]="intervalCount"
+    (workoutFinished)="startCooldown()"
+    ></app-workout-cardio>
 </div>
 
 <div *ngIf="isCoolingDown">

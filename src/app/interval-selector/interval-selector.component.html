@@ -1,4 +1,4 @@
 <h2>Select interval count: </h2>
-<select (change)="selectIntervalCount($event.target.value)">
-  <option *ngFor="let i of intervalCountOptions">{{i}}</option>
+<select [(ngModel)]="selectedOption" (change)="selectIntervalCount()">
+  <option *ngFor="let opt of intervalCountOptions" [ngValue]="opt">{{opt.name}}</option>
 </select>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 export enum Workout {
-  BodyWeight,
+  Bodyweight,
   CardioMachine
 }
 
@@ -14,9 +14,9 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.startSelecting();
-    this.workout = Workout.BodyWeight;
     this.intervalCount = 2;
+    this.workout = Workout.Bodyweight;
+    this.startSelecting();
   }
 
   workoutSelected(selection: Workout) {

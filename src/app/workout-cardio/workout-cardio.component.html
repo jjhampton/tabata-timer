@@ -1,3 +1,9 @@
-<p>
-  workout-cardio works!
-</p>
+<h1>Cardio Machine Workout</h1>
+<div>Current Interval: {{currentInterval}}</div>
+
+<div *ngIf="!this.isFinished">
+  <div>time: {{timeDisplay}}</div>
+  <div>Exercise: {{selectedExercise}}</div>
+</div>
+
+<div *ngIf="this.isFinished">Workout Complete</div>

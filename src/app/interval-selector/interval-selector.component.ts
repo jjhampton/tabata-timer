@@ -1,4 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
+interface IOption {
+  id: number;
+  name: string;
+}
 
 @Component({
   selector: 'app-interval-selector',
@@ -6,18 +11,41 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./interval-selector.component.css']
 })
 export class IntervalSelectorComponent implements OnInit {
+  @Input() intervals: number;
   @Output() intervalCountSelected = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    this.intervalCountOptions = [2, 4, 6, 8];
+    this.intervalCountOptions = [
+      {
+        id: 2,
+        name: '2'
+      },
+      {
+        id: 4,
+        name: '4'
+      },
+      {
+        id: 6,
+        name: '6'
+      },
+      {
+        id: 8,
+        name: '8'
+      }
+    ];
+
+    this.selectedOption = this.intervalCountOptions.find(
+      x => x.id === this.intervals
+    );
   }
 
-  selectIntervalCount(count: number) {
+  selectIntervalCount() {
+    const count = this.selectedOption.id;
     this.intervalCountSelected.emit(count);
   }
 
-  intervalCountOptions: number[];
-
+  intervalCountOptions: IOption[];
+  selectedOption: IOption;
 }
