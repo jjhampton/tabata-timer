@@ -7,6 +7,7 @@ import { IntervalSelectorComponent } from './interval-selector/interval-selector
 import { WarmupTimerComponent } from './warmup-timer/warmup-timer.component';
 import { WorkoutCardioComponent } from './workout-cardio/workout-cardio.component';
 import { WorkoutBodyweightComponent } from './workout-bodyweight/workout-bodyweight.component';
+import { CooldownTimerComponent } from './cooldown-timer/cooldown-timer.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { WorkoutBodyweightComponent } from './workout-bodyweight/workout-bodywei
     IntervalSelectorComponent,
     WarmupTimerComponent,
     WorkoutCardioComponent,
-    WorkoutBodyweightComponent
+    WorkoutBodyweightComponent,
+    CooldownTimerComponent
   ],
   imports: [
     BrowserModule

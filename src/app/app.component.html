@@ -32,6 +32,6 @@
   <app-workout-cardio *ngIf="workout === WorkoutOptions.CardioMachine"></app-workout-cardio>
 </div>
 
-<div *ngIf="isCooolingDown">
-  Cool Down
+<div *ngIf="isCoolingDown">
+  <app-cooldown-timer (cooldownFinished)="startSelecting()"></app-cooldown-timer>
 </div>

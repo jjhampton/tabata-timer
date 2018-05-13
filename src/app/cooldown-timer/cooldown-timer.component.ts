@@ -4,12 +4,12 @@ import { Subscription } from 'rxjs';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-warmup-timer',
-  templateUrl: './warmup-timer.component.html',
-  styleUrls: ['./warmup-timer.component.css']
+  selector: 'app-cooldown-timer',
+  templateUrl: './cooldown-timer.component.html',
+  styleUrls: ['./cooldown-timer.component.css']
 })
-export class WarmupTimerComponent implements OnInit, OnDestroy {
-  @Output() warmupFinished = new EventEmitter();
+export class CooldownTimerComponent implements OnInit, OnDestroy {
+  @Output() cooldownFinished = new EventEmitter();
 
   constructor(private timerService: TimerService) { }
 
@@ -17,8 +17,7 @@ export class WarmupTimerComponent implements OnInit, OnDestroy {
     this._timerSubscription = this.timerService.timerUpdate.subscribe(value => {
       const isTimeRemaining = value > 0;
       if (!isTimeRemaining) {
-        this._timerSubscription.unsubscribe();
-        this.finishWarmup();
+        this._timerSubscription.unsubscribe();            this.finishCooldown();
       }
 
       this.timeDisplay = moment(value).format('mm:ss:SS');
@@ -29,14 +28,14 @@ export class WarmupTimerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-     this._timerSubscription.unsubscribe();
+    this._timerSubscription.unsubscribe();
   }
 
-  finishWarmup() {
+  finishCooldown() {
     this.isFinished = true;
 
     setTimeout(() => {
-      this.warmupFinished.emit();
+     this.cooldownFinished.emit();
     }, 3000);
   }
 
