@@ -2,13 +2,15 @@
   <h1>
     Tabata Timer
   </h1>
-  <div>
+  <div class="row">
     Workout Type: {{workout == WorkoutOptions.Bodyweight ? 'Bodyweight' : 'Cardio Machine'}}
   </div>
-  <div>
+  <div class="row">
     Intervals: {{intervalCount}}
   </div>
-  <button (click)="startSelecting()">Start Over</button>
+  <div class="row">
+      <button (click)="startSelecting()">Start Over</button>
+  </div>
 </div>
 
 <div *ngIf="isSelecting">
@@ -17,7 +19,7 @@
     (intervalCountSelected)="intervalCountSelected($event)"
     [intervals]="intervalCount">
   </app-interval-selector>
-  <div>
+  <div class="row">
     <button (click)="startWarmup()">Start Warmup</button>
     <button (click)="startWorkout()">Start Workout</button>
   </div>

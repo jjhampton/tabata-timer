@@ -2,8 +2,8 @@
 <div>Current Interval: {{currentInterval}}</div>
 
 <div *ngIf="!this.isFinished">
-  <div>time: {{timeDisplay}}</div>
-  <div>Exercise: {{selectedExercise}}</div>
+  <div class="timer">{{timeDisplay}}</div>
+  <div class="exercise">Exercise: {{selectedExercise}}</div>
 </div>
 
 <div *ngIf="this.isFinished">Workout Complete</div>

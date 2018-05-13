@@ -1,9 +1,9 @@
 <h2>Select your workout type: </h2>
-<ul>
-  <li class="workoutSelector-item" (click)="selectWorkout(0)">
-    Body-Weight
-  </li>
-  <li class="workoutSelector-item" (click)="selectWorkout(1)">
+<div>
+  <button (click)="selectWorkout(WorkoutOptions.Bodyweight)">
+    Bodyweight
+  </button>
+  <button class="workoutSelector-item" (click)="selectWorkout(WorkoutOptions.CardioMachine)">
     Cardio Machine
-  </li>
-</ul>
+  </button>
+</div>

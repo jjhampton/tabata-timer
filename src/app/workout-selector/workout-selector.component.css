@@ -1,8 +1,3 @@
-.workoutSelector-item {
-  color: blue;
-  cursor: pointer;
-}
-
-.workoutSelector-item:hover {
-  color: darkblue;
+:host {
+  text-align: center;
 }

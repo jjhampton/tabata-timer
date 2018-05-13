@@ -1,4 +1,6 @@
 <h1>Warmup Timer</h1>
-<div>{{timeDisplay}}</div>
+<div class="timer">{{timeDisplay}}</div>
 <div *ngIf="isFinished">Warmup complete</div>
-<button (click)="warmupFinished.emit()">Start Workout</button>
+<div class="row">
+  <button (click)="warmupFinished.emit()">Start Workout</button>
+</div>

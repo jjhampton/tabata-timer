@@ -16,4 +16,6 @@ export class WorkoutSelectorComponent implements OnInit {
   selectWorkout(workout: Workout) {
     this.workoutSelected.emit(workout);
   }
+
+  WorkoutOptions = Workout;
 }

@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '~normalize.css';
+
+body {
+  font-family: Arial;
+}
+
+button {
+  background-color: #44c767;
+  border-radius: 28px;
+  border: 1px solid #18ab29;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 16px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #2f6627;
+}
+
+button:hover {
+  background-color: #5cbf2a;
+}
+
+button:active {
+  position: relative;
+  top: 1px;
+}
+
+button + button {
+  margin-left: 1em;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+select {
+  padding: 1em;
+  border-radius: 14px;
+}
+
+.row {
+  margin-top: 1em;
+  text-align: center;
+}
+
+.exercise {
+  font-size: 32px;
+}
+
+.timer {
+  font-family: 'PT Mono', monospace;
+  font-size: 32px;
+  margin-top: 1em;
+}
