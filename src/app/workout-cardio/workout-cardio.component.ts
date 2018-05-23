@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output, OnInit, OnDestroy } from '@angular/core';
 import { TimerService } from '../timer.service';
+import { AudioService } from '../audio.service';
 import { Subscription } from 'rxjs';
 import * as moment from 'moment';
 
@@ -12,7 +13,7 @@ export class WorkoutCardioComponent implements OnInit, OnDestroy {
   @Input() intervals: number;
   @Output() workoutFinished = new EventEmitter();
 
-  constructor(private timerService: TimerService) { }
+  constructor(private timerService: TimerService, private audioService: AudioService) { }
 
   ngOnInit() {
     this.currentInterval = 0;
@@ -24,6 +25,7 @@ export class WorkoutCardioComponent implements OnInit, OnDestroy {
   }
 
   startExerciseInterval() {
+    this.audioService.playWhistle();
     this.currentInterval++;
     this.selectedExercise = 'Maximum Effort';
 
@@ -43,6 +45,7 @@ export class WorkoutCardioComponent implements OnInit, OnDestroy {
   }
 
   startRest() {
+    this.audioService.playAlarm();
     this.selectedExercise = 'Resting';
 
     this._timerSubscription = this.timerService.timerUpdate.subscribe(value => {
