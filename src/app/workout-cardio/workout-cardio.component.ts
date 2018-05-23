@@ -60,7 +60,8 @@ export class WorkoutCardioComponent implements OnInit, OnDestroy {
         return;
       }
 
-      this._timerSubscription.unsubscribe();            this.finishWorkout();
+      this._timerSubscription.unsubscribe();
+      this.finishWorkout();
     });
 
     const countdownTime = moment(10, 'seconds');
@@ -71,7 +72,7 @@ export class WorkoutCardioComponent implements OnInit, OnDestroy {
     this.isFinished = true;
 
     setTimeout(() => {
-      this.workoutFinished.emit();
+    this.workoutFinished.emit();
     }, 3000);
   }
 

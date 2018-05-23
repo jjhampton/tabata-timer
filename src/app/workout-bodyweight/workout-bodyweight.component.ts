@@ -78,7 +78,8 @@ export class WorkoutBodyweightComponent implements OnInit, OnDestroy {
         return;
       }
 
-      this._timerSubscription.unsubscribe();            this.finishWorkout();
+      this._timerSubscription.unsubscribe();
+      this.finishWorkout();
     });
 
     const countdownTime = moment(10, 'seconds');
