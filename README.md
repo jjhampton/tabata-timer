@@ -1,20 +1,37 @@
 # TabataTimer
 
+Exercise is work. It’s one thing to put aside time to do it, it’s another to put aside time to plan ahead.
+
+This mobile app tells you exactly what to do and how long, so you don’t have to think about what you’re doing next while you are deprived of oxygen. 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
-## Development server
+## Local Development
+
+### Pre-install Dependencies
+You will need the following tools properly installed on your computer:
+* [Git](https://git-scm.com/)
+* [Node.js](https://nodejs.org/)
+* [NPM](https://npmjs.org/)
+
+### Installation:
+* `git clone <repository-url>` this repository
+* change into the new directory
+* `npm install`
+
+### Development Web Server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Cordova Android App
+### Cordova Android App
 
 Prerequisites:
-Cordova
-Android SDK Installed
-Android Virtual Device (AVD) configured on your machine
-Java
-Gradle
-See installation instructions at Cordova site: https://cordova.apache.org/docs/en/latest/guide/cli/index.html
+* Cordova
+* Android SDK 
+* Android Virtual Device (AVD) configured on your machine
+* Java
+* Gradle
+* See detailed installation instructions at Cordova site: https://cordova.apache.org/docs/en/latest/guide/cli/index.html
 
 Run:
 1. `cordova create mobile`
