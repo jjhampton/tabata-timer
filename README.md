@@ -23,7 +23,7 @@ Run:
 1. `cordova platform add android`
 1. `cordova run android`
 
-The app should load in the your AVD configuration.
+The app should load in your configured AVD emulator.
 
 ## Code scaffolding
 
