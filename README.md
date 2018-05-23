@@ -6,6 +6,25 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Cordova Android App
+
+Prerequisites:
+Cordova
+Android SDK Installed
+Android Virtual Device (AVD) configured on your machine
+Java
+Gradle
+See installation instructions at Cordova site: https://cordova.apache.org/docs/en/latest/guide/cli/index.html
+
+Run:
+1. `cordova create mobile`
+1. `ng build --prod --base-href . --output-path mobile/www`
+1. `cd mobile`
+1. `cordova platform add android`
+1. `cordova run android`
+
+The app should load in the your AVD configuration.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
