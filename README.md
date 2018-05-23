@@ -1,4 +1,5 @@
-# TabataTimer
+# Tabata Timer
+https://github.com/jjhampton/tabata-timer
 
 Exercise is work. It’s one thing to put aside time to do it, it’s another to put aside time to plan ahead.
 
